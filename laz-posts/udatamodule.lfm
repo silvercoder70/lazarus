@@ -1,0 +1,74 @@
+object PostDataModule: TPostDataModule
+  OldCreateOrder = False
+  Height = 269
+  HorizontalOffset = 960
+  VerticalOffset = 127
+  Width = 536
+  object SQLite3Connection1: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'C:\Work\TC Solutions\repos\laz-posts\data\Data.db'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    AlwaysUseBigint = False
+    Left = 72
+    Top = 24
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = SQLite3Connection1
+    Left = 72
+    Top = 104
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 186
+    Top = 186
+  end
+  object SQLQuery1: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'Created_Time'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'LastModified_Time'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'User_Name'
+        DataType = ftFixedChar
+        Precision = -1
+        Size = 128
+      end    
+      item
+        Name = 'URI'
+        DataType = ftFixedChar
+        Precision = -1
+        Size = 512
+      end>
+    AfterInsert = SQLQuery1AfterInsert
+    BeforeInsert = SQLQuery1BeforeInsert
+    Database = SQLite3Connection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from "DATA";'
+    )
+    RefreshSQL.Strings = (
+      ''
+    )
+    Options = [sqoKeepOpenOnCommit, sqoAutoApplyUpdates, sqoAutoCommit]
+    Params = <>
+    Macros = <>
+    Left = 186
+    Top = 109
+  end
+end
